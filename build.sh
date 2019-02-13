@@ -48,6 +48,8 @@ clone_repo() {
         echo "Repository ${full_repo} has unpushed commits, will not continue."
         exit 1
     fi
+    git log -1 --decorate=short > ./git_last_commit
+    git rev-parse --abbrev-ref HEAD > ./git_branch
     popd > /dev/null
 }
 
