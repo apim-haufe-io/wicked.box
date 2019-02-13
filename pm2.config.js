@@ -9,9 +9,6 @@ module.exports = {
       script    : 'bin/api',
       cwd       : '/usr/src/app/wicked.api',
       env: {
-        NODE_ENV: 'box',
-        DEBUG: '',
-        LOG_LEVEL: 'info'
       }
     },
     {
@@ -19,8 +16,7 @@ module.exports = {
       script    : 'bin/www',
       cwd       : '/usr/src/app/wicked.ui',
       env: {
-        PORTAL_API_URL: 'http://localhost:3001',
-        LOG_LEVEL: 'info'
+        PORTAL_API_URL: 'http://localhost:3001'
       }
     },
     {
@@ -28,8 +24,7 @@ module.exports = {
       script    : 'dist/bin/kong-adapter.js',
       cwd       : '/usr/src/app/wicked.kong-adapter',
       env: {
-        PORTAL_API_URL: 'http://localhost:3001',
-        LOG_LEVEL: 'info'
+        PORTAL_API_URL: 'http://localhost:3001'
       }
     },
     {
@@ -37,8 +32,7 @@ module.exports = {
       script    : 'dist/authz.js',
       cwd       : '/usr/src/app/wicked.auth',
       env: {
-        PORTAL_API_URL: 'http://localhost:3001',
-        LOG_LEVEL: 'info'
+        PORTAL_API_URL: 'http://localhost:3001'
       }
     },
     {
@@ -46,8 +40,7 @@ module.exports = {
       script    : 'bin/mailer',
       cwd       : '/usr/src/app/wicked.mailer',
       env: {
-        PORTAL_API_URL: 'http://localhost:3001',
-        LOG_LEVEL: 'info'
+        PORTAL_API_URL: 'http://localhost:3001'
       }
     },
     {
@@ -55,8 +48,7 @@ module.exports = {
       script    : 'bin/chatbot',
       cwd       : '/usr/src/app/wicked.chatbot',
       env: {
-        PORTAL_API_URL: 'http://localhost:3001',
-        LOG_LEVEL: 'info'
+        PORTAL_API_URL: 'http://localhost:3001'
       }
     }
   ],

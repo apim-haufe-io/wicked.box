@@ -1,6 +1,9 @@
 properties([
     pipelineTriggers([
-        [$class: "SCMTrigger", scmpoll_spec: "H/10 * * * *"]
+        [$class: "SCMTrigger", scmpoll_spec: "H/10 * * * *"],
+        [$class: 'jenkins.triggers.ReverseBuildTrigger', upstreamProjects: 
+            "wicked.test/" + env.BRANCH_NAME.replaceAll("/", "%2F"),
+            threshold: hudson.model.Result.SUCCESS]
     ])
 ])
 

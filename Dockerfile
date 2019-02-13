@@ -40,8 +40,11 @@ ENV KONG_PROXY_ERROR_LOG "/tmp/stderr"
 # This will work on Docker for Mac and Docker for Windows, but currently
 # NOT on Docker for Linux, see https://github.com/docker/for-linux/issues/264
 ENV KONG_PG_HOST host.docker.internal
+# Default settings, may be overridden
 ENV KONG_PG_USER kong
 ENV KONG_PG_PASSWORD kong
+# Default env for wicked-in-a-box, may also be overridden
+ENV NODE_ENV box
 
 # Hack output of KONG to the output of PID 1, which is what docker
 # outputs as logs.
