@@ -10,7 +10,7 @@ RUN cd /usr/src/app/wicked.node-sdk && \
 
 COPY wicked.env /usr/src/app/wicked.env
 WORKDIR /usr/src/app/wicked.env
-RUN npm pack && cp portal-env*.tgz ..
+RUN npm pack && cp portal-env*.tgz ../portal-env.tgz
 RUN cp package.all.json package.json && \
     cp ../wicked-sdk.tgz . && \
     npm install --production
