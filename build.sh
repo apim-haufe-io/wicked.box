@@ -18,6 +18,7 @@ if [ -z "$DOCKER_TAG" ]; then
 fi
 
 branch=$1
+build_date=$(date -u "+%Y-%m-%d %H:%M:%S")
 
 clone_repo() {
     local repo
@@ -48,6 +49,8 @@ clone_repo() {
         echo "Repository ${full_repo} has unpushed commits, will not continue."
         exit 1
     fi
+    rm -f ./build_date ./git_last_commit ./git_branch
+    printf "${build_date}" > ./build_date
     git log -1 --decorate=short > ./git_last_commit
     git rev-parse --abbrev-ref HEAD > ./git_branch
     popd > /dev/null
