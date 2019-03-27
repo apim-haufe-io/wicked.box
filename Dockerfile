@@ -65,8 +65,10 @@ RUN apk add --no-cache --virtual .build-deps wget tar ca-certificates \
 
 RUN npm install -g pm2
 
-RUN wget -O /usr/local/bin/wtfc.sh https://raw.githubusercontent.com/typekpb/wtfc/1607d27280ba1ee8a74d74d97a1f9de6a6d38486/wtfc.sh \
-    && chmod +x /usr/local/bin/wtfc.sh
+# This does not work on Jenkins, and I do not know why. It was downloaded manually and
+# put into the "resources" sub directory.
+# RUN wget -O /usr/local/bin/wtfc.sh https://raw.githubusercontent.com/typekpb/wtfc/1607d27280ba1ee8a74d74d97a1f9de6a6d38486/wtfc.sh \
+#     && chmod +x /usr/local/bin/wtfc.sh
 
 COPY . /usr/src/app
 COPY --from=env_builder /usr/src/app/wicked.env/node_modules /usr/src/app/wicked.env/node_modules

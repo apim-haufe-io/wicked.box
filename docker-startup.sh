@@ -13,9 +13,9 @@ export KONG_ADMIN_LISTEN="0.0.0.0:8001"
 
 redis-server &
 
-wtfc.sh -T 30 "nc -z ${KONG_PG_HOST} ${KONG_PG_PORT}"
+/usr/src/app/resources/wtfc.sh -T 30 "nc -z ${KONG_PG_HOST} ${KONG_PG_PORT}"
 sleep 3
-wtfc.sh -T 30 "nc -z ${KONG_PG_HOST} ${KONG_PG_PORT}"
+/usr/src/app/resources/wtfc.sh -T 30 "nc -z ${KONG_PG_HOST} ${KONG_PG_PORT}"
 kong start --run-migrations
 
 pm2 start /usr/src/app/pm2.config.js
