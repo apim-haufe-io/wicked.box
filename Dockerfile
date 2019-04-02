@@ -1,10 +1,12 @@
 FROM node:10-alpine AS env_builder
 
-RUN npm install typescript -g
+RUN apk update && \
+    apk add jq
 
 COPY wicked.node-sdk /usr/src/app/wicked.node-sdk
 RUN cd /usr/src/app/wicked.node-sdk && \
-    npm install --production && \
+    npm install -g typescript@$(jq .devDependencies.typescript package.json | tr -d '"') && \
+    npm ci --production && \
     tsc && \
     cp $(npm pack) ../wicked-sdk.tgz
 
@@ -13,7 +15,7 @@ WORKDIR /usr/src/app/wicked.env
 RUN npm pack && cp portal-env*.tgz ../portal-env.tgz
 RUN cp package.all.json package.json && \
     cp ../wicked-sdk.tgz . && \
-    npm install --production
+    npm ci --production
 
 COPY wicked.kong-adapter /usr/src/app/wicked.kong-adapter
 WORKDIR /usr/src/app/wicked.kong-adapter
