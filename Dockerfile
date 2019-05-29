@@ -47,6 +47,8 @@ ENV KONG_PG_USER kong
 ENV KONG_PG_PASSWORD kong
 # Default env for wicked-in-a-box, may also be overridden
 ENV NODE_ENV box
+# See https://github.com/Haufe-Lexware/wicked.haufe.io/issues/196
+ENV ALLOW_ANY_REDIRECT_URI ""
 
 # Hack output of KONG to the output of PID 1, which is what docker
 # outputs as logs.
